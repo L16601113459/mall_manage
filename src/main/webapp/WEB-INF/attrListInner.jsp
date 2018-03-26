@@ -24,7 +24,5 @@
 		</c:forEach>
 		<br>
 	</c:forEach>
-	
-	
 </body>
 </html>
