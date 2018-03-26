@@ -78,4 +78,5 @@ public class T_MALL_SKU {
 		this.jg = jg;
 	}
 
+
 }

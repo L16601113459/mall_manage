@@ -29,4 +29,16 @@ public class SpuServiceImpl implements SpuServiceInf {
 //		spuMapper.insert_images(spu.getId(), list_image);
 	}
 
+	@Override
+	public List<T_MALL_PRODUCT> get_spu_list(int pp_id, int flbh2) {
+
+		HashMap<Object, Object> map = new HashMap<>();
+		map.put("pp_id", pp_id);
+		map.put("flbh2", flbh2);
+		
+		List<T_MALL_PRODUCT> list_spu = spuMapper.select_spu_list(map);
+		
+		return list_spu;
+	}
+
 }

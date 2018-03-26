@@ -5,7 +5,7 @@
 		select attr.id attr_id, attr.*, val.id val_id, val.* 
 		from t_mall_attr attr, t_mall_value val 
 		where attr.id = val.shxm_id 
-		and #{flbh2}
+		and flbh2 = #{flbh2}
 	</select>
 	
 	<resultMap type="com.atguigu.bean.OBJECT_T_MALL_ATTR" id="select_attr_list_map" autoMapping="true">
@@ -14,6 +14,7 @@
 		<collection property="list_value" ofType="com.atguigu.bean.T_MALL_VALUE" autoMapping="true">
 			<result column="val_id" property="id" />
 		</collection>
+		
 	</resultMap>
 
 	<insert id="insert_attr" useGeneratedKeys="true" keyColumn="id" keyProperty="attr.id">
