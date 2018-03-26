@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
+	@RequestMapping("goto_sku")
+	public String goto_sku() {
+		return "sku";
+	}
 
 	// 商品属性跳转
 	@RequestMapping("goto_attr")

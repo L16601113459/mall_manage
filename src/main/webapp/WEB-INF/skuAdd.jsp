@@ -11,17 +11,17 @@
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
-	
 </script>
-<title>硅谷商城</title>
+<title>Insert title here</title>
 </head>
 <body>
-	后台管理首页
+	品牌：<select></select> 商品：<select></select>
 	<hr>
-	<a href="goto_spu.do" target="_blank">商品信息管理</a><br>
-	<a href="goto_attr.do" target="_blank">商品属性管理</a><br>
-	<a href="goto_sku.do" target="_blank">商品库存单元管理</a><br>
-	商品缓存管理<br>
-	
+	分类属性：<input type="checkbox" /><br>
+	商品库存名称：<input type="text" /><br>
+	商品库存数量：<input type="text" /><br>
+	商品库存价格：<input type="text" /><br>
+	商品库存地址：<input type="text" /><br>
+	<input type="submit" value="提交" />
 </body>
 </html>

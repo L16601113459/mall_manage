@@ -17,37 +17,25 @@
 	$(function (){
 		$.getJSON("js/json/class_1.js",function(data){
 			$(data).each(function(i,json){
-				$("#class_1_select").append("<option value="+json.id+">"+json.flmch1+"</option>");
+				$("#sku_class_1_select").append("<option value="+json.id+">"+json.flmch1+"</option>");
 			});
 		});
 	});
 	
-	function get_class_2(class_1_id){
+	function get_sku_class_2(class_1_id){
 		$.getJSON("js/json/class_2_"+class_1_id+".js",function(data){
-			$("#class_2_select").empty();
+			$("#sku_class_2_select").empty();
 			$(data).each(function(i,json){
-				$("#class_2_select").append("<option value="+json.id+">"+json.flmch2+"</option>");
-			});
-		});
-		
-		get_tm(class_1_id);
-	}
-	
-	function get_tm(class_1_id){
-		$.getJSON("js/json/tm_class_1_"+class_1_id+".js",function(data){
-			$("#tm_select").empty();
-			$(data).each(function(i,json){
-				$("#tm_select").append("<option value="+json.id+">"+json.ppmch+"</option>");
+				$("#sku_class_2_select").append("<option value="+json.id+">"+json.flmch2+"</option>");
 			});
 		});
 	}
 	
-	function goto_spu_add(){
-		var class_1_id =  $("#class_1_select").val();
-		var class_2_id = $("#class_2_select").val();
-		var tm_id = $("#tm_select").val();
+	function goto_sku_add(){
+		var class_1_id =  $("#sku_class_1_select").val();
+		var class_2_id = $("#sku_class_2_select").val();
 		
-		window.location.href="goto_spu_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id+"&pp_id="+tm_id;
+		window.location.href="goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id;
 	}
 </script>
 <title>Insert title here</title>
@@ -56,13 +44,12 @@
 	spu商品信息管理
 	<hr>
 	一级：
-	<select id="class_1_select" onchange="get_class_2(this.value);"><option>请选择</option></select>
+	<select id="sku_class_1_select" onchange="get_sku_class_2(this.value);"><option>请选择</option></select>
 	二级：
-	<select id="class_2_select"><option>请选择</option></select> 品牌：
-	<select id="tm_select"><option>请选择</option></select>
+	<select id="sku_class_2_select"><option>请选择</option></select>
 	<br> 查询
 	<br>
-	<a href="javascript:goto_spu_add();">添加</a>
+	<a href="javascript:goto_sku_add();">添加</a>
 	<br> 修改
 	<br> 删除
 	<br>
