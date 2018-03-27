@@ -14,57 +14,98 @@
 <title>硅谷商城</title>
 </head>
 <body>
-	<!--  -->
-	商品属性信息管理
-	<hr>
-	一级：<select id="attr_class_1_select" onchange="get_attr_class_2(this.value);"><option>请选择</option></select>
-	二级：<select id="attr_class_2_select" onchange="get_attr_list(this.value)"><option>请选择</option></select> <br>
-	查询<br>
-	<a href="javascript:goto_attr_add()">添加</a><br> 
-	删除<br>
-	编辑<br>
-	<hr>
-	<div id="attrListInner"></div>
+	<div class="easyui-layout" data-options="fit:true"> 
+		<div data-options="region:'north',split:true" style="height:50px" >
+			<div style="margin-top: 10px; margin-left: 10px">
+			一级：<select data-options="width:200" class="easyui-combobox" id="attr_class_1_select" onchange="get_attr_class_2(this.value);"><option>请选择</option></select>
+			二级：<select data-options="width:200" class="easyui-combobox" id="attr_class_2_select" onchange="get_attr_list_json(this.value)"><option>请选择</option></select> <br>
+			</div>
+		</div>
+		<div data-options="region:'west',split:true" style="width:70px">
+			<div style="margin-top: 10px; margin-left: 10px; font: 50px">
+			<a href="javascript:goto_attr_add()">添加</a><br>
+			查询<br>
+			删除<br>
+			编辑<br>
+			</div>
+		</div>
+		<div data-options="region:'center'">
+			<div id="attrListInner" class="easyui-datagrid" ></div>
+		</div>
+	</div>
 	
 	
 <script type="text/javascript">
 	$(function(){
-		$.getJSON("js/json/class_1.js", function(data){
-			$(data).each(function(i,json){
-				$("#attr_class_1_select").append("<option value="+json.id+">"+json.flmch1+"</option>");
-			});
-		});
+		$('#attr_class_1_select').combobox({    
+		    url:'js/json/class_1.js',    
+		    valueField:'id',    
+		    textField:'flmch1',
+		    width:'100',
+		    onChange:function get_attr_class_2(){
+				var class_1_id = $(this).combobox("getValue");
+		    	$('#attr_class_2_select').combobox({    
+				    url:"js/json/class_2_"+class_1_id+".js",    
+				    valueField:'id',    
+				    textField:'flmch2',
+				    onChange:function (){
+				    	var flbh2 = $(this).combobox("getValue");
+				    	get_attr_list_json(flbh2);
+				    }
+		    	});
+			} 
+		}); 
 	});
-	
-	function get_attr_class_2(class_1_id){
-		$.getJSON("js/json/class_2_"+class_1_id+".js",function(data){
-			$("#attr_class_2_select").empty();
-			$(data).each(function(i,json){
-				$("#attr_class_2_select").append("<option value="+json.id+">"+json.flmch2+"</option>");				
-			});
-		});
-	} 
+	function goto_attr_add(){
+		var class_2_id = $("#attr_class_2_select").combobox("getValue");
+		add_tab("goto_attr_add.do?flbh2="+class_2_id,"添加属性");
+	}
 	/*
 	認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真
 	認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真
 	別再丟東西了
-	*/
 	function goto_attr_add(){
-		var class_2_id = $("#attr_class_2_select").val();		
+		var class_2_id = $("#attr_class_2_select").val;		
 		window.location.href="goto_attr_add.do?flbh2="+class_2_id;
 	}
+	*/
+/* 	
 	function get_attr_list(flbh2){
 		// 异步查询
 		$.post("get_attr_list.do",{flbh2:flbh2},function(data){
 			$("#attrListInner").html(data);
 		});
 	}
-/* 	function get_attr_list(flbh2){
-		// 异步查询
-		$.post("get_attr_list.do",{flbh2:flbh2},function(data){
-			$("#attrListInner").html(date);
+ */	
+ 	function get_attr_list_json(flbh2){
+		$('#attrListInner').datagrid({    
+		    url:'get_attr_list_json.do',    
+		    queryParams: {
+		    	flbh2: flbh2,
+			},
+		    columns:[[    
+		        {field:'id',title:'id',width:125},    
+		        {field:'shxm_mch',title:'属性名',width:125},    
+		        {field:'list_value',title:'属性值',width:450,
+		        	formatter: function(value,row,index){
+		        		var str = "";
+						$(value).each(function(i,json){
+							str = str+json.shxzh+json.shxzh_mch+" ";
+						}); 
+						return str;
+		        	}	
+		        },
+		        {field:'chjshj',title:'创建时间',width:155,
+		        	formatter: function(value,row,index){
+						var date = new Date(value);
+						var dateStr = date.toLocaleString()
+						return dateStr;
+		        	}	
+		        }   
+		    ]]
 		});
-	} */
+	}
+
 </script>
 </body>
 </html>
