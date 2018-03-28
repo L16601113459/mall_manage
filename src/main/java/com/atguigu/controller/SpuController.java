@@ -44,11 +44,17 @@ public class SpuController {
 		
 		// 保存商品信息
 		spuServiceInf.save_spu(spu,list_image);
+		//goto_spu_add
+		ModelAndView mv = new ModelAndView("redirect:/index.do");
+		int class_1_id = spu.getFlbh1();
+		int class_2_id = spu.getFlbh2();
+		int tm_id = spu.getPp_id();
+//		mv.addObject("flbh1", spu.getFlbh1());
+//		mv.addObject("flbh2", spu.getFlbh2());
+//		mv.addObject("pp_id", spu.getPp_id());
+		mv.addObject("url", "goto_spu_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id+"&pp_id="+tm_id);
+		mv.addObject("title", "添加属性");
 		
-		ModelAndView mv = new ModelAndView("redirect:/goto_spu_add.do");
-		mv.addObject("flbh1", spu.getFlbh1());
-		mv.addObject("flbh2", spu.getFlbh2());
-		mv.addObject("pp_id", spu.getPp_id());
 		return mv;
 	}
 	

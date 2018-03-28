@@ -41,7 +41,6 @@
 		    url:'js/json/class_1.js',    
 		    valueField:'id',    
 		    textField:'flmch1',
-		    width:'100',
 		    onChange:function get_attr_class_2(){
 				var class_1_id = $(this).combobox("getValue");
 		    	$('#attr_class_2_select').combobox({    

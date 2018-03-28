@@ -30,9 +30,13 @@ public class SkuController {
 
 		skuServiceInf.save_sku(sku, spu, list_attr.getList_attr());
 
-		ModelAndView mv = new ModelAndView("redirect:/goto_sku_add.do");
-		mv.addObject("flbh1", spu.getFlbh1());
-		mv.addObject("flbh2", spu.getFlbh2());
+		ModelAndView mv = new ModelAndView("redirect:/index.do");
+//		mv.addObject("flbh1", spu.getFlbh1());
+//		mv.addObject("flbh2", spu.getFlbh2());
+		Integer class_1_id = spu.getFlbh1();
+		int class_2_id = spu.getFlbh2();
+		mv.addObject("url", "goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id);
+		mv.addObject("title", "添加属性");
 		return mv;
 	}
 

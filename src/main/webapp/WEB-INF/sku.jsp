@@ -50,8 +50,8 @@
 	function goto_sku_add(){
 		var class_1_id = $("#sku_class_1_select").val();
 		var class_2_id = $("#sku_class_2_select").val();
-		
-		window.location.href="goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id;
+		add_tab("goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id,"添加属性");
+		//window.location.href="goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id;
 	}
 </script>
 </body>
