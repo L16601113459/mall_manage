@@ -10,9 +10,7 @@
 <base href="<%=basePath %>">
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript">
 
-</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,13 +22,57 @@
 		<input type="hidden" name="pp_id" value="${spu.pp_id}" />
 		
 		商品名称：<input name="shp_mch" type="text" /><br>
-		商品描述：<textarea name="shp_msh" rows="10" cols="50"></textarea><br>
+		商品描述：<br>
+		<textarea name="shp_msh" rows="10" cols="50"></textarea><br>
+		商品颜色：<a href="javascript:add_color_input(0)">添加</a>
+			<div id="color_div"></div>
+		商品版本：<a href="javascript:add_version_input()">添加</a>
+			<div id="version_div"></div>
 		商品图片：<br>
-		<input type="file" name="files" />
-		<input type="file" name="files" />
-		<input type="file" name="files" />
-		
+		<div id ="d_0" style="float:left;margin-left:10px;border:1px red solid;">
+			<input id="file_0" type="file" name="files" style="display:none;" onChange="replace_image(0)"/>
+			<img id="image_0" onclick="click_image(0)" style="cursor:pointer;" src="image/upload_hover.png" height="100px" width="100px"/>
+		</div>
 		<input type="submit" value="提交" />
 	</form>
+
+<script type="text/javascript">
+	function add_color_input(index){
+		var color = '<input type="text" id="color_'+(index+1)+'" name="colors" />';
+		$("#color_div").append(color);
+	}
+	function add_version_input(){
+		$("#version_div").append("<input type='text' />");
+	}
+
+	function click_image(index){
+		$("#file_"+index).click();
+	}
+	
+	function replace_image(index){
+		// 获得图片对象
+		var blob_image = $("#file_"+index)[0].files[0];
+		var url = window.URL.createObjectURL(blob_image);
+		
+		// 替换image
+		$("#image_"+index).attr("src",url);
+		
+		var length = $(":file").length;
+		
+		if((index+1)==length){
+			// 用户选择的是最后一张图片
+			add_image(index);
+		}
+	
+	}
+	
+	function add_image(index){
+		var a = '<div id ="d_'+(index+1)+'" style="float:left;margin-left:10px;border:1px red solid;">';
+		var b = '<input id="file_'+(index+1)+'" type="file" name="files" style="display:none;" onChange="replace_image('+(index+1)+')"/>'
+		var c = '<img id="image_'+(index+1)+'" onclick="click_image('+(index+1)+')" style="cursor:pointer;" src="image/upload_hover.png" width="100px" height="100px"/>'
+		var d = '</div>';
+		$("#d_"+index).after(a+b+c+d);
+	}
+</script>
 </body>
 </html>

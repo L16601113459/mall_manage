@@ -64,7 +64,7 @@
 		var class_1_id =  $("#class_1_select").val();
 		var class_2_id = $("#class_2_select").val();
 		var tm_id = $("#tm_select").val();
-		add_tab("goto_spu_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id+"&pp_id="+tm_id,"添加属性");
+		add_tab("goto_spu_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id+"&pp_id="+tm_id,"添加商品信息");
  		//window.location.href="goto_spu_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id+"&pp_id="+tm_id;
 	}
 	

@@ -26,15 +26,13 @@
 	function add_tab(url,title){
 		var flag = $('#tt').tabs('exists',title);
 		if(!flag){
-			$('#tt').tabs('add',{    
+			$('#tt').tabs('add',{
 			    title:title,    
 			    href:url,    
 			    closable:true,    
 			    tools:[{    
 			        iconCls:'icon-mini-refresh',    
-			        handler:function(){    
-			            alert('refresh');    
-			        }    
+			        handler:function(){add_tab(url,title)}
 			    }]    
 			});
 		}else{

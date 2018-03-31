@@ -53,7 +53,7 @@ public class AttrController {
 		ModelAndView mv = new ModelAndView("redirect:/index.do");
 //		mv.addObject("flbh2", flbh2);
 		mv.addObject("url", "goto_attr_add.do?flbh2="+flbh2);
-		mv.addObject("title", "添加属性");
+		mv.addObject("title", "添加属性信息");
 		return mv;
 	}
 	

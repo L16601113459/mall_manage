@@ -36,7 +36,7 @@ public class SkuController {
 		Integer class_1_id = spu.getFlbh1();
 		int class_2_id = spu.getFlbh2();
 		mv.addObject("url", "goto_sku_add.do?flbh1="+class_1_id+"&flbh2="+class_2_id);
-		mv.addObject("title", "添加属性");
+		mv.addObject("title", "添加库存信息");
 		return mv;
 	}
 

@@ -57,7 +57,7 @@
 	});
 	function goto_attr_add(){
 		var class_2_id = $("#attr_class_2_select").combobox("getValue");
-		add_tab("goto_attr_add.do?flbh2="+class_2_id,"添加属性");
+		add_tab("goto_attr_add.do?flbh2="+class_2_id,"添加属性信息");
 	}
 	/*
 	認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真認真
