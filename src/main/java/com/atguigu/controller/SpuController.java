@@ -1,5 +1,6 @@
 package com.atguigu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.atguigu.bean.T_MALL_PRODUCT;
+import com.atguigu.bean.T_MALL_PRODUCT_COLOR;
 import com.atguigu.service.SpuServiceInf;
 import com.atguigu.util.MyFileUpload;
+import com.google.gson.Gson;
 
 @Controller
 public class SpuController {
@@ -39,10 +42,12 @@ public class SpuController {
 	}
 	
 	@RequestMapping("spu_add")
-	public ModelAndView spu_add(@RequestParam("colors") String[] colors, @RequestParam("files") MultipartFile[] files, T_MALL_PRODUCT spu) {
+	public ModelAndView spu_add(@RequestParam("colors") String[] colors, T_MALL_PRODUCT_COLOR spu_color, @RequestParam("files") MultipartFile[] files, T_MALL_PRODUCT spu) {
 		
 		// 通过工具类上传图片，保存到集合
 		List<String> list_image = MyFileUpload.upload_image(files);
+		
+		spuServiceInf.save_color(spu_color,colors);
 		
 		// 保存商品信息
 		spuServiceInf.save_spu(spu,list_image);

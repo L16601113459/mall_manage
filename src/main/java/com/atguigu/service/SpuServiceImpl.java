@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.atguigu.bean.T_MALL_PRODUCT;
+import com.atguigu.bean.T_MALL_PRODUCT_COLOR;
 import com.atguigu.mapper.SpuMapper;
 
 @Service
@@ -40,5 +41,15 @@ public class SpuServiceImpl implements SpuServiceInf {
 		
 		return list_spu;
 	}
+
+	@Override
+	public void save_color(T_MALL_PRODUCT_COLOR spu_color, String[] colors) {
+//		spu_color.setShp_id(shp_id);
+		Map<Object, Object> map = new HashMap<>();
+		map.put("colors",colors);
+		map.put("spu_color",spu_color);
+		spuMapper.insert_color(map);
+	}
+
 
 }

@@ -11,6 +11,7 @@ public interface SpuMapper {
 	void insert_spu(T_MALL_PRODUCT spu);
 
 	void insert_images(Map<Object, Object> map);
+	void insert_color(Map<Object, Object> map);
 
 	List<T_MALL_PRODUCT> select_spu_list(HashMap<Object, Object> map);
 }
